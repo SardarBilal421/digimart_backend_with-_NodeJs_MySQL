@@ -8,4 +8,6 @@ router
   .post(riderController.riderSignup)
   .get(riderController.getAllRider);
 
+router.route("/verifyRider/:id").patch(riderController.updateRiderVerification);
+
 module.exports = router;
