@@ -8,9 +8,9 @@ router
   .get(productController.getAll)
   .post(productController.createProduct);
 
+router.route("/getAllCategory").get(productController.getAllCategory);
 router.route("/addCategory").post(productController.addCategory);
 router.route("/:name").get(productController.getOne);
 
-router.route("/getAllCategory").get(productController.getAllCategory);
 router.route("/getAllCategory/:name").get(productController.getOneCategory);
 module.exports = router;

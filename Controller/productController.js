@@ -34,10 +34,8 @@ exports.createProduct = catchAsync(async (req, res, next) => {
     name,
     image,
     price,
-    price_discount,
+
     stock,
-    discount,
-    created_at,
     last_update,
     description,
     status,
@@ -46,17 +44,15 @@ exports.createProduct = catchAsync(async (req, res, next) => {
 
   console.log("POST REQUEST");
   const query = `
-          INSERT INTO product (name, image, price, price_discount, stock, discount, created_at, last_update, description, status, category)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          INSERT INTO product (name, image, price, stock, created_at, last_update, description, status, category)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         `;
 
   const result = dbPool.query(query, [
     name,
     image,
     price,
-    price_discount,
     stock,
-    discount,
     Date.now(),
     last_update,
     description,
