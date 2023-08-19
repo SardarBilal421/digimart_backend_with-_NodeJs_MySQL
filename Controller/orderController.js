@@ -37,6 +37,18 @@ exports.getAllOrders = catchAsync(async (req, res, next) => {
       console.error("Error executing query:", err.message);
       res.status(500).json({ error: "Internal server error" });
     } else {
+      res.json({ results: results });
+    }
+  });
+});
+exports.getAllOrdersForRider = catchAsync(async (req, res, next) => {
+  dbPool.query("SELECT * FROM place_order", (err, results) => {
+    const orders = results.filter((x) => x.rider_id);
+    console.log(orders);
+    if (err) {
+      console.error("Error executing query:", err.message);
+      res.status(500).json({ error: "Internal server error" });
+    } else {
       res.json({ results: results.filter((x) => x.rider_id == 0) });
     }
   });
